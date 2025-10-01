@@ -24,3 +24,10 @@ app.use(errorHandler);
 
 // eslint-disable-next-line no-console
 app.listen(PORT, () => console.log('ok'));
+
+app.get('/crash-test', (req, res) => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+  res.send({ ok: true });
+});
